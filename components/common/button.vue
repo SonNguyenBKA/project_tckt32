@@ -1,5 +1,5 @@
 <template>
-  <button class="button-common" :class="[type, {'loading': loading}]" @click.prevent="$emit('click')">
+  <button class="button-common" :class="[type, {'loading': loading}]" @click="event => $emit('click', event)">
     <template v-if="loading">
       <img class="size-6 animate-spin" src="@/assets/icons/loading-white.svg" alt="">
     </template>

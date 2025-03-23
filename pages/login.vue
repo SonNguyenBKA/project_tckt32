@@ -3,23 +3,30 @@
     <div class="login-page--content">
       <img class="w-[6rem]" src="@/public/logo.svg" alt="">
       <h1 class="login-page--content__title">BỘ GIẢ LẬP 32 ĐIỆN THOẠI TƯƠNG TỰ</h1>
-      <el-form :model="formLogin" ref="ruleFormRef" :rules="rules" label-width="auto" class="form-login"  @validate="handleValidateItem">
-        <FormItemInput v-model="formLogin.username" type="text" prop="username" placeholder="Username" label="Username"/>
-        <FormItemInput v-model="formLogin.password" type="password"  prop="password"  placeholder="Password" label="Password"/>
-        <ButtonCommon class="mt-8" text="Login" :loading="false" @click="login"/>
+      <el-form :model="formLogin" ref="ruleFormRef" :rules="rules" label-width="auto" class="form-login"
+               @validate="handleValidateItem">
+        <FormItemInput v-model="formLogin.username" type="text" prop="username" placeholder="Username"
+                       label="Username"/>
+        <FormItemInput v-model="formLogin.password" type="password" prop="password" placeholder="Password"
+                       label="Password"/>
+        <ButtonCommon class="mt-8" text="Login" :loading="loadingBtn" @click.prevent="login"/>
       </el-form>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-import type { FormInstance, FormItemProp, FormRules } from 'element-plus'
+import _ from 'lodash'
+import {reactive} from 'vue'
+import type {FormInstance, FormItemProp, FormRules} from 'element-plus'
 import FormItemInput from "~/components/common/form/form-input.vue";
 import ButtonCommon from "~/components/common/button.vue";
+import {delay} from "~/utils";
+
 definePageMeta({
   layout: 'normal'
 })
+const loadingBtn = ref(false)
 const formLogin = reactive({
   username: '',
   password: ''
@@ -32,13 +39,16 @@ const rules = reactive<FormRules>({
 const handleValidateItem = (callback) => {
   // console.log(callback)
 }
-const login = () => {
-  ruleFormRef.value?.validate(isValid => {
+const login = _.debounce(() => {
+  ruleFormRef.value?.validate(async isValid => {
     if (isValid) {
-      // call api
+      console.log('call api')
+      loadingBtn.value = true
+      await delay(2000)
+      loadingBtn.value = false
     }
   })
-}
+}, 500)
 </script>
 
 <style lang="scss">
@@ -53,6 +63,7 @@ const login = () => {
     &__title {
       @apply text-[#0A1629] text-[1.375rem] font-semibold mt-8;
     }
+
     .form-login {
       @apply mt-8;
       @apply flex flex-col items-center;
