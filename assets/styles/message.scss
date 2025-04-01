@@ -1,0 +1,68 @@
+.el-message {
+  @apply px-3 py-2 max-w-[20rem] flex items-center rounded-[0.25rem]  #{!important};
+  @apply w-full m-0 top-4 right-4 left-[unset] #{!important};
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: none !important;
+  word-break: break-word;
+  @apply mx-auto transform-none #{!important};
+  .el-message__content {
+    @apply w-full text-[0.875rem] font-medium text-white #{!important};
+  }
+  .el-message__icon {
+    svg {
+      display: none;
+    }
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .el-badge.el-message__badge {
+    right: 0px !important;
+    display: none !important;
+    .el-badge__content {
+      border: none !important;
+    }
+  }
+}
+
+.el-message.el-message--error {
+  background: var(--color-danger);
+  .el-message__icon {
+    background-image: url('@/assets/icons/message/error.svg');
+  }
+}
+
+.el-message.el-message--success {
+  background: var(--color-success);
+  .el-message__icon {
+    background-image: url('@/assets/icons/message/success.svg');
+  }
+}
+
+.el-message.el-message--warning {
+  background: var(--color-warning);
+  .el-message__icon {
+    background-image: url('@/assets/icons/message/warning.svg');
+  }
+}
+
+//.message-with-progress {
+//  .message-progress {
+//    position: absolute;
+//    bottom: -2px;
+//    left: 0;
+//    height: 2px;
+//    border-radius: 1px;
+//    background: var(--color-warning);
+//  }
+//}
+
+@keyframes message-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}

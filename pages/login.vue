@@ -22,10 +22,11 @@ import type {FormInstance, FormItemProp, FormRules} from 'element-plus'
 import FormItemInput from "~/components/common/form/form-input.vue";
 import ButtonCommon from "~/components/common/button.vue";
 import {delay} from "~/utils";
-
+import useAuthStore from '@/stores/auth'
 definePageMeta({
   layout: 'normal'
 })
+const authStore = useAuthStore()
 const loadingBtn = ref(false)
 const formLogin = reactive({
   username: '',
@@ -44,11 +45,14 @@ const login = _.debounce(() => {
     if (isValid) {
       console.log('call api')
       loadingBtn.value = true
-      await delay(2000)
+      await authStore.login(formLogin)
       loadingBtn.value = false
     }
   })
 }, 500)
+
+onMounted(() => {
+})
 </script>
 
 <style lang="scss">

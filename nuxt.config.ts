@@ -30,6 +30,7 @@ export default defineNuxtConfig({
   modules: [
     '@element-plus/nuxt'
   ],
+  plugins: ['@/plugins/pinia.ts'],
   devServer: {
     host: '0.0.0.0',
     port: Number(process.env['PORT']) || 8000
@@ -38,5 +39,15 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.VITE_API_URL,
     }
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          additionalData: `  @use "@/assets/styles/variables.scss";`
+        }
+      }
+    },
   }
 })
