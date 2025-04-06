@@ -15,3 +15,4 @@ export class CookieService {
         Cookie.remove(KEY_ACCESS_TOKEN)
     }
 }
+export const { getToken, setToken, removeToken } = CookieService

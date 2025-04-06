@@ -1,8 +1,13 @@
-import {CookieService} from "~/services/cookie";
+import { getToken } from "~/services/cookie";
 
 export default defineNuxtRouteMiddleware((to, from) => {
-    const token = CookieService.getToken()
-    const publicPages = ['/login']
+    const token = getToken()
+
+    if(to.path === '/index.html') {
+        return navigateTo('/')
+    }
+
+    const publicPages = ['/login', '/test', '/404']
     if (!token && !publicPages.includes(to.path)) {
         return navigateTo('/login')
     }

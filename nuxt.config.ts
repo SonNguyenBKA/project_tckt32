@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  // ssr: true,  // Server-Side Rendering khi build
+  ssr: false,  // Server-Side Rendering khi build
   // nitro: {
   //   preset: 'static',
   //   prerender: {
