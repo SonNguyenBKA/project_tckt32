@@ -46,6 +46,11 @@ const value = defineModel<string>()
     span {
       @apply text-[0.875rem] text-[#7D8592] leading-[120%];
     }
+    &.is-selected {
+      span {
+        @apply text-[#15C0E6];
+      }
+    }
   }
 }
 .el-select.select-common {

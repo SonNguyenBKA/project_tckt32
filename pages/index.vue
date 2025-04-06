@@ -15,7 +15,6 @@ const tabs = ref([
   { label: 'Device View', id: 2},
 ])
 const tabActive = ref(tabs.value[0].id)
-
 </script>
 
 <style lang="scss">

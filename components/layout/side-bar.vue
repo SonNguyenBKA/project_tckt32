@@ -52,7 +52,7 @@ const activeRouter = (path: string) => {
   &--item {
     @apply flex items-center gap-[0.875rem] px-8 py-4;
     &__text {
-      @apply text-[1rem] text-[#818194] font-semibold;
+      @apply text-[1rem] text-[#818194] font-medium;
     }
 
     &.router-link-active {

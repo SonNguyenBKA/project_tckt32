@@ -12,3 +12,6 @@ export const getIcon = (path: string): any => {
   const src = `../assets/icons/${path}`
   return new URL(src, import.meta.url)
 }
+export const getRandomNumber = (a: number, b: number): number => {
+  return +(Math.random() * (b - a) + a).toFixed(2)
+}
