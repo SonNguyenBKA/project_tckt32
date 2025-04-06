@@ -1,16 +1,25 @@
 <template>
-  <div>
-    index page
-    <nuxt-link to="/settings">settings</nuxt-link>
+  <div class="dashboard-page">
+    <CommonTab :tabs="tabs" @emitTab="active => tabActive = active" class="mb-4"/>
+    <TabDashboard v-if="tabActive === 1" />
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  layout: 'default'
-})
+import { ref } from 'vue'
+import CommonTab from '@/components/common/tab.vue'
+import TabDashboard from '@/components/pages/dashboard/tab-dashboard.vue'
+
+const tabs = ref([
+  { label: 'Dashboard', id: 1},
+  { label: 'Device View', id: 2},
+])
+const tabActive = ref(tabs.value[0].id)
+
 </script>
 
-<style scoped>
-
+<style lang="scss">
+.dashboard-page {
+  padding: 1rem 2rem;
+}
 </style>

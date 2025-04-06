@@ -1,7 +1,6 @@
 <template>
   <div class="side-bar">
     <nuxt-link v-for="nav in navList" :to="nav.to" class="side-bar--item">
-      {{ }}
       <img class="size-6" :src="activeRouter(nav.to) ? nav.iconActive : nav.icon" alt="">
       <p class="side-bar--item__text" :class="{'!text-[#0E8A3E]' : activeRouter(nav.to) }">{{ nav.name }}</p>
     </nuxt-link>
@@ -9,32 +8,32 @@
 </template>
 
 <script setup lang="ts">
-import {getIcon} from '@/utils'
+import iconNav from '@/assets/icons/nav/iconNav'
 
 const route = useRoute()
 const navList = [
-  {icon: getIcon('nav/dashboard.svg'), iconActive: getIcon('nav/dashboard-active.svg'), name: 'Dashboard', to: '/'},
+  {icon: iconNav.dashboard, iconActive:  iconNav.dashboardActive, name: 'Dashboard', to: '/'},
   {
-    icon: getIcon('nav/monitoring.svg'),
-    iconActive: getIcon('nav/monitoring-active.svg'),
+    icon: iconNav.monitoring,
+    iconActive: iconNav.monitoringActive,
     name: 'Monitoring',
     to: '/monitoring'
   },
   {
-    icon: getIcon('nav/configuration.svg'),
-    iconActive: getIcon('nav/configuration-active.svg'),
+    icon: iconNav.configuration,
+    iconActive: iconNav.configurationActive,
     name: 'Configuration',
     to: '/configuration'
   },
   {
-    icon: getIcon('nav/administration.svg'),
-    iconActive: getIcon('nav/administration-active.svg'),
+    icon: iconNav.administration,
+    iconActive: iconNav.administrationActive,
     name: 'Administration',
     to: '/administration'
   },
   {
-    icon: getIcon('nav/troublesetting.svg'),
-    iconActive: getIcon('nav/troublesetting-active.svg'),
+    icon: iconNav.troublesetting,
+    iconActive: iconNav.troublesettingActive,
     name: 'Troublesetting',
     to: '/troublesetting'
   },
