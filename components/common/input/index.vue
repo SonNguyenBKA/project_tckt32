@@ -19,6 +19,9 @@ const [modelValue, modelModifiers] = defineModel<string>({
     if (modelModifiers.onlyNumber) {
       return value.replace(/\D/g, "")
     }
+    if (modelModifiers.ip) {
+      return value.replace(/[^0-9.]/g, "").replaceAll('..', '.')
+    }
     return value
   }
 })
